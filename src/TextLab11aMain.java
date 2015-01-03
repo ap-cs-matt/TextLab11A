@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 public class TextLab11aMain {
@@ -8,7 +9,7 @@ public class TextLab11aMain {
 				Scanner input = new Scanner(System.in);
 				System.out.println("How many prime numbers do you wish to compute? >>>>>");
 				final int MAX = input.nextInt() + 1;
-				int index = 1;
+				int index = 2;
 				
 				boolean primes1[];
 				primes1 = new boolean[MAX];
@@ -17,8 +18,7 @@ public class TextLab11aMain {
 					index ++;
 				}
 				
-				
-				displayPrimes(computePrimes(primes1));
+				displayPrimes(computePrimes(primes1));		//compute primes recieves the returned array and passes it to the display primes
 			}
 
 			public static boolean[] computePrimes(boolean primes[])
@@ -36,42 +36,43 @@ public class TextLab11aMain {
 			    //////////////////
 			    
 			    int i = 2; //loop control + index counter
-			    System.out.println(primes.length);
-				while ( i < primes.length)			// goes through each number starting at 2
+				while ( i < primes.length -1 )			// goes through each number starting at 2
 				{
-					if (i > 2 ){
-						
-					}
-					
 					if( primes[i] = true )			// if value is prime will do loop below
 					{	
 						int k = i;
-						while (k+k < primes.length)	//changes all multiples of number to not prime
+						int t = k;  // t stores intial value of k
+						while (k + t < primes.length)	//changes all multiples of number to not prime
 						{
-							k +=k;
-							primes2[k] = false;
-							System.out.println(Arrays.toString(primes2));
+							k = k + t;	
+							primes2[k] = false;	
 						}
-						
 					}
 					i++;
-					System.out.println("I made it!");
 				}
 				return primes2;
-				
 			}
 
 			public static void displayPrimes(boolean primes2[])
 			{
 				System.out.println("\nPRIMES BETWEEN 1 AND "+ (primes2.length-1));
-				int i = 1;
 				
+				DecimalFormat prime = new DecimalFormat("0000 ");
+				int i = 1;
+				int counter = 0; //for total number of primes
+				int last = 0;  // for largest prime number
 				while (i < primes2.length){
-					if (primes2[i] == true ){
-					System.out.println(i);
+					if (primes2[i] == true ) 	// if index reads true will print out that location
+					{
+						
+						System.out.print(prime.format(i));
+						last = i;
+						counter ++;
 					}
 					i++;
 				}	
+				System.out.println("\n\nThe largest prime number is: " + prime.format(last));
+				System.out.println("The total number of prime numbers in the range you entered is: " + counter);
 			}
 }
 			
