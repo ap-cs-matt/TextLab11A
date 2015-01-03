@@ -9,54 +9,71 @@ public class TextLab11aMain {
 				System.out.println("How many prime numbers do you wish to compute? >>>>>");
 				final int MAX = input.nextInt() + 1;
 				int index = 1;
-				int counter = 0;
 				
-				boolean primes[];
-				primes = new boolean[MAX];
+				boolean primes1[];
+				primes1 = new boolean[MAX];
 				while (index < MAX){
-					primes[index] = true;
+					primes1[index] = true;
 					index ++;
 				}
-				System.out.println(Arrays.toString(primes));
-				computePrimes(primes);
-				displayPrimes(primes);
+				
+				
+				displayPrimes(computePrimes(primes1));
 			}
 
-			public static void computePrimes(boolean primes[])
+			public static boolean[] computePrimes(boolean primes[])
 			{
 				System.out.println("\nCOMPUTING PRIME NUMBERS");
-				int i = 2; //loop control + index counter
 				
+				//creates a duplicate array
+				int r = 0;
+				boolean[] primes2 = new boolean[primes.length];
+			    while(r < primes.length) { 
+				
+			         primes2[r] = primes[r];
+			    r++;
+			    }
+			    //////////////////
+			    
+			    int i = 2; //loop control + index counter
+			    System.out.println(primes.length);
 				while ( i < primes.length)			// goes through each number starting at 2
 				{
+					if (i > 2 ){
+						
+					}
+					
 					if( primes[i] = true )			// if value is prime will do loop below
 					{	
 						int k = i;
-						while (k < primes.length && k+k < primes.length)	//changes all multiples of number to not prime
+						while (k+k < primes.length)	//changes all multiples of number to not prime
 						{
 							k +=k;
-							primes[k] = false;
-							System.out.println("false");
-							System.out.println(Arrays.toString(primes));
+							primes2[k] = false;
+							System.out.println(Arrays.toString(primes2));
 						}
+						
 					}
 					i++;
+					System.out.println("I made it!");
 				}
+				return primes2;
+				
 			}
 
-			public static void displayPrimes(boolean primes[])
+			public static void displayPrimes(boolean primes2[])
 			{
-				System.out.println("\n\nPRIMES BETWEEN 1 AND "+ (primes.length-1));
+				System.out.println("\nPRIMES BETWEEN 1 AND "+ (primes2.length-1));
 				int i = 1;
 				
-				while (i < primes.length){
-					
-					if (primes[i] == false ){
+				while (i < primes2.length){
+					if (primes2[i] == true ){
 					System.out.println(i);
 					}
 					i++;
-				}
-				
+				}	
 			}
-	}
+}
+			
+			
 
