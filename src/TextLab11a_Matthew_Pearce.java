@@ -7,7 +7,7 @@ public class TextLab11a_Matthew_Pearce {
 
 		// This main method needs additions for the 100 point version.
 		Scanner input = new Scanner(System.in);
-		System.out.println("How many prime numbers do you wish to compute? >>>>>");
+		System.out.println("Enter the primes upper bound  ===>>   >>>>>");
 		final int MAX = input.nextInt() + 1;
 		int index = 2;
 		
